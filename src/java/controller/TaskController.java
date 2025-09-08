@@ -20,11 +20,14 @@ import org.hibernate.Transaction;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.criterion.Order;
+import com.google.gson.GsonBuilder;
 
 @WebServlet(name = "TaskController", urlPatterns = {"/api/tasks/*"})
 public class TaskController extends HttpServlet {
 
-    private Gson gson = new Gson();
+    private Gson gson = new GsonBuilder()
+    .setDateFormat("yyyy-MM-dd HH:mm:ss")
+    .create();
 
     @Override
     protected void doOptions(HttpServletRequest request, HttpServletResponse response)
